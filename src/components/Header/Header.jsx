@@ -8,8 +8,7 @@ function Header() {
             <div className="links">
                 <Link to="/">Home</Link>
                 <Link to="/products">Product List</Link>
-                {/*<Link to='/create' href="/create"*/}
-                {/*>New Blog</Link>*/}
+                <Link to="/cart">Cart</Link>
             </div>
         </nav>
     );

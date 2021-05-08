@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import ProductList from "./components/ProductList/ProductList";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Product from "./components/Product/Product";
+import Cart from "./components/Cart/Cart";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         <Route exact path="/products"><ProductList/></Route>
                         {/*<Route path="/create"><Create/></Route>*/}
                         <Route path="/products/:id"><Product/></Route>
+                        <Route exact path="/cart"><Cart/></Route>
                         <Route path="*"><NotFound/></Route>
                     </Switch>
                 </div>
