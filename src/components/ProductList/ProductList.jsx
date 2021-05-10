@@ -1,54 +1,58 @@
 import {Link, Switch, Route} from 'react-router-dom';
-import UseFetch from "../UseFetch/UseFetch";
-import {useEffect, useState} from "react";
 import Card from 'react-bootstrap/Card';
 import './ProductList.css'
 import Button from 'react-bootstrap/Button';
 import CardDeck from 'react-bootstrap/CardDeck'
 import Product from "../Product/Product";
+import {CartContext} from "../../Context";
+import * as React from "react";
+import Spinner from 'react-bootstrap/Spinner';
 
 const ProductList = () => {
-    const {error, isPending, data: products} = UseFetch('././product_list.json')
-    const [items, setItems] = useState([]);
+    const {products, addToCart} = React.useContext(CartContext)
+    const {error, isPending} = React.useContext(CartContext)
 
-    // async function fetchData() {
-    //     const res = await fetch('././product_list.json');
-    //     res.json()
-    //         .then(res => setTimeout(() => {
-    //             setItems(res);
-    //         }, 2000));
-    // }
-    //
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
+    if (products === null) {
+        return <Spinner animation="border" role="status">
+            <span className="sr-only"/>
+        </Spinner>;
+    }
+
+    const handleSort = (value) => {
+        console.log(value)
+    }
 
     return (
         <div className="blog-list">
-            {products.map(product => {
-                return (
+            {error && <div>{error}</div>}
+            {isPending && <Spinner animation="border" role="status">
+                <span className="sr-only"/>
+            </Spinner>}
+            {products && products.length > 0 && products.map(product => {
+                    return (
+                        <CardDeck style={{display: 'flex', flexDirection: 'row'}} key={product.id}>
+                            <Card style={{width: '30rem', border: '0px', display: 'flex'}}>
+                                <Link
+                                    to={`/products/${product.id}`} onClick={handleSort(product.id)}>
+                                    <Card.Title className="itemName">{product.id} - {product.name}</Card.Title>
+                                    {!product.image && (
+                                        <Card.Img src='/assets/default-image-620x600.jpg' className="noImages"/>
+                                    )}
+                                    <Card.Img src={product.image} className="itemImages"/>
+                                    {/*<Product products={product} />*/}
+                                </Link>
+                                <Button onClick={() => addToCart(product)} className="CartFooterButton" variant="info"
+                                        size="lg">Add To Cart</Button>
+                            </Card>
+                            {/*<Switch>*/}
+                            {/*    <Route path="/products/:id" component={<Product products={products} />} />*/}
+                            {/*</Switch>*/}
+                        </CardDeck>
 
-                    <CardDeck style={{display: 'flex', flexDirection: 'row'}} key={product.id}>
-                        <Card style={{width: '30rem', border: '0px', display: 'flex'}}>
-                            <Link
-                                to={`/products/${product.id}`}>
-                                <Card.Title className="itemName">{product.id} - {product.name}</Card.Title>
-                                {!product.image && (
-                                    <Card.Img src='/assets/default-image-620x600.jpg' className="noImages"/>
-                                )}
-                                <Card.Img src={product.image} className="itemImages"/>
-                            </Link>
-                            <Button className="CartFooterButton" variant="info" size="lg">Add To Cart</Button>
-                        </Card>
-
-                    </CardDeck>
-
-                )
-            }
+                    )
+                }
             )}
-            {/*<Switch>*/}
-            {/*    <Route path="/products/:id" component={Product} />*/}
-            {/*</Switch>*/}
+
 
         </div>
     );

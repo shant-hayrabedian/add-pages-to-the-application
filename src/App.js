@@ -17,7 +17,6 @@ function App() {
                     <Switch>
                         <Route exact path="/"><Home/></Route>
                         <Route exact path="/products"><ProductList/></Route>
-                        {/*<Route path="/create"><Create/></Route>*/}
                         <Route path="/products/:id"><Product/></Route>
                         <Route exact path="/cart"><Cart/></Route>
                         <Route path="*"><NotFound/></Route>
