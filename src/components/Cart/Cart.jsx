@@ -11,7 +11,7 @@ const Cart = () => {
     return (
         <div>
             {cart.length === 0 && (
-                <p className="noItems">The cart is empty Please Go to Products List & Add Products
+                <p className="noItems">The cart is empty Please Go to Product List & Add Products
                     <br/>
                     <Link to="/products" style={{textDecoration: 'none'}}>Go to Products...</Link></p>
             )}
@@ -28,14 +28,16 @@ const Cart = () => {
                                 <img src='/assets/default-image-620x600.jpg' className="noImages"/>
                             )}
                             <img src={car.image}/>
-                            <Button variant="danger" onClick={() => {
-                                onDelete(car.id);
-                            }}>Delete Cart
-                            </Button>
                         </article>
+                        <Button className='deleteIt' variant="danger" onClick={() => {
+                            onDelete(car.id);
+                        }}>Delete Cart
+                        </Button>
                     </div>
                 )
             })}
+            {cart.length !== 0 && (
+            <h1>Your Have: {cart.length} Carts</h1>)}
         </div>
     )
 }

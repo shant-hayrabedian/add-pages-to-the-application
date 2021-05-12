@@ -1,8 +1,7 @@
 .noImages {
-    width: 30% !important;
+    width: 34% !important;
     margin-left: 13px;
     margin-top: 6px;
-    /*margin-right: -107px;*/
 }
 
 .itemName {
@@ -11,12 +10,12 @@
 }
 
 .CartFooterButton {
-    width: 50%;
-    margin-top: 25px;
+    width: 65%;
+    margin-top: 37px;
     justify-content: center;
 }
 .itemImages {
-    width: 25% !important;
+    width: 31% !important;
     margin-left: 13px;
     margin-top: 6px;
     justify-content: center;

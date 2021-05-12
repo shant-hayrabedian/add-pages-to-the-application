@@ -3,6 +3,7 @@
     max-width: 800px;
     margin: 0 auto;
     border-bottom: 1px solid #f2f2f2;
+    cursor: pointer;
 }
 .navbar h1 {
     color: orange;
@@ -11,6 +12,7 @@
 }
 .navbar .links {
     margin-left: auto;
+    cursor: pointer;
 }
 .navbar a {
     margin-left: 16px;
@@ -20,6 +22,3 @@
 .navbar a:hover {
     color: #f1356d;
 }
-/*.navbar .links .active {*/
-/*    color:red*/
-/*}*/

@@ -1,10 +1,7 @@
 import React, {useEffect, useState} from "react";
-import UseFetch from "./components/UseFetch/UseFetch";
 
 const CartContext = React.createContext();
-
-const CartProvider = (props) => {
-    // const { data:products} = UseFetch('././product_list.json')
+const CartProvider = ({children}) => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [isPending, setIsPending] = useState(true);
@@ -49,11 +46,9 @@ const CartProvider = (props) => {
         setCart(deleteCart);
     }
 
-
     return <CartContext.Provider
-        value={{products, setProducts, cart, setCart, addToCart, onDelete, isPending, setIsPending, error, setError, getData}}
-    >
-        {props.children}
+        value={{products, cart, addToCart, onDelete, isPending, error}}>
+        {children}
     </CartContext.Provider>
 }
 export {CartContext, CartProvider}

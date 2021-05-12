@@ -1,8 +1,9 @@
 import {Link} from "react-router-dom";
 import './Header.css';
-import {NavLink} from "react-bootstrap";
+import * as React from "react";
 
 function Header() {
+
     return (
         <nav className="navbar">
             <h1>Adding pages to the application</h1>
