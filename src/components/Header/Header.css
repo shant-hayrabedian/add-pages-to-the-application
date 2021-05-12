@@ -1,24 +1,51 @@
-.navbar {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    border-bottom: 1px solid #f2f2f2;
-    cursor: pointer;
+header {
+    min-height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
 }
-.navbar h1 {
-    color: orange;
-    font-size: 25px;
-    margin-left: 87px;
-}
-.navbar .links {
-    margin-left: auto;
-    cursor: pointer;
-}
-.navbar a {
-    margin-left: 16px;
+
+header .logo a {
     text-decoration: none;
-    padding: 6px;
+    text-transform: uppercase;
+    color: #94548f;
 }
-.navbar a:hover {
-    color: #f1356d;
+
+header nav {
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #94548f;
+    padding: 0 15px;
+    font-size: 20px;
+}
+
+nav ul li a:hover {
+    color: deepskyblue;
+}
+
+nav .nav-cart {
+    cursor: pointer;
+    position: relative;
+}
+
+nav .nav-cart span {
+    position: absolute;
+    top: -12px;
+    right: -7px;
+    background: crimson;
+    font-size: 10px;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 50%;
+    z-index: -1;
 }

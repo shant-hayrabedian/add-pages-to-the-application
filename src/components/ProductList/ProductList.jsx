@@ -1,8 +1,5 @@
 import {Link} from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
 import './ProductList.css'
-import Button from 'react-bootstrap/Button';
-import CardDeck from 'react-bootstrap/CardDeck'
 import {CartContext} from "../../Context";
 import * as React from "react";
 import Spinner from 'react-bootstrap/Spinner';
@@ -17,27 +14,27 @@ const ProductList = () => {
     }
 
     return (
-        <div className="blog-list">
+        <div id="product">
             {error && <div>{error}</div>}
             {isPending && <Spinner animation="border" role="status">
                 <span className="sr-only"/>
             </Spinner>}
             {products && products.length > 0 && products.map(product => {
                     return (
-                        <CardDeck style={{display: 'flex', flexDirection: 'row', marginTop: '10px'}} key={product.id}>
-                            <Card style={{width: '35rem', border: '0px', display: 'flex'}}>
-                                <Link
-                                    to={`/products/${product.id}`}>
-                                    <Card.Title className="itemName">{product.id} - {product.name}</Card.Title></Link>
+                        <div className="card" key={product.id}>
+                            <Link to={`/products/${product.id}`}>
                                 {!product.image && (
-                                    <Card.Img src='/assets/default-image-620x600.jpg' className="noImages"/>
+                                    <img src='/assets/default-image-620x600.jpg' style={{height: '150px'}}/>
                                 )}
-                                <Card.Img src={product.image} className="itemImages"/>
-
-                                <Button onClick={() => addToCart(product)} className="CartFooterButton" variant="info"
-                                        size="lg">Add To Cart</Button>
-                            </Card>
-                        </CardDeck>
+                                <img src={product.image} alt=""/>
+                            </Link>
+                            <div className="content">
+                                <h3>
+                                    <Link to={`/products/${product.id}`}>{product.name}</Link>
+                                </h3>
+                                <button onClick={() => addToCart(product)}>Add to cart</button>
+                            </div>
+                        </div>
 
                     )
                 }

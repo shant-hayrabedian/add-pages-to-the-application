@@ -15,7 +15,7 @@ function App() {
         <Router>
             <div className="App">
                 <Header/>
-                <div className="content">
+                <div>
                     <Switch>
                         <Route exact path="/"><Home/></Route>
                         <Route exact path="/products"><ProductList/></Route>

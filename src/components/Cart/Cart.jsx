@@ -15,29 +15,34 @@ const Cart = () => {
                     <br/>
                     <Link to="/products" style={{textDecoration: 'none'}}>Go to Products...</Link></p>
             )}
-            {cart && cart.map(car => {
+            {cart && cart.map(cartProduct => {
                 return (
-                    <div key={car.id}>
-                        <article>
-                            <b>Product ID: {car.id}</b>
-                            <h2>Product Name:{car.name}</h2>
-                            <p>Product Description:{car.description}</p>
-                            <p>Product Price:{car.price}</p>
-                            <p>Product Color:{car.color}</p>
-                            {!car.image && (
-                                <img src='/assets/default-image-620x600.jpg' className="noImages"/>
-                            )}
-                            <img src={car.image}/>
-                        </article>
-                        <Button className='deleteIt' variant="danger" onClick={() => {
-                            onDelete(car.id);
-                        }}>Delete Cart
-                        </Button>
+                    <div className="detailsCart" key={cartProduct.id}>
+                        {!cartProduct.image && (
+                            <img src='/assets/default-image-620x600.jpg' className="noImages2"/>
+                        )}
+                        <img src={cartProduct.image}/>
+                        <div className="box">
+                            <div className="row">
+                                <b>Product ID: {cartProduct.id}</b>
+                                <h2>Product Name:{cartProduct.name}</h2>
+                                <p>Product Price:{cartProduct.price}</p>
+                                <p>Product Color:{cartProduct.color}</p>
+                            </div>
+                            <p>Product Description:{cartProduct.description}</p>
+                            <Button className='deleteIt' variant="danger" onClick={() => {
+                                onDelete(cartProduct.id);
+                            }}>Delete Cart
+                            </Button>
+                        </div>
                     </div>
                 )
             })}
-            {cart.length !== 0 && (
-            <h1>Your Have: {cart.length} Carts</h1>)}
+            <div className="total">
+                {cart.length !== 0 && (
+                    <h1>You Have: {cart.length} Products in your cart</h1>)}
+            </div>
+
         </div>
     )
 }

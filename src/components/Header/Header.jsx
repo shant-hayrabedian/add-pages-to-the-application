@@ -1,18 +1,28 @@
 import {Link} from "react-router-dom";
 import './Header.css';
 import * as React from "react";
+import {useContext} from "react";
+import {CartContext} from "../../Context";
+import {GiShoppingCart} from "react-icons/all";
 
-function Header() {
+const Header = () => {
+    const {cart} = useContext(CartContext);
 
     return (
-        <nav className="navbar">
-            <h1>Adding pages to the application</h1>
-            <div className="links">
-                <Link to="/">Home</Link>
-                <Link to="/products">Product List</Link>
-                <Link to="/cart">Cart</Link>
+        <header>
+            <div className="logo">
+                <h1><Link to="/">Adding pages to the application</Link></h1>
             </div>
-        </nav>
+            <nav>
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/products">Product List</Link></li>
+                    <li><Link to="/cart">
+                        <GiShoppingCart/>Cart<span className="nav-cart"> {cart.length}</span>
+                    </Link></li>
+                </ul>
+            </nav>
+        </header>
     );
 }
 
